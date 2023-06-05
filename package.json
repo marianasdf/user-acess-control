@@ -15,7 +15,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p tsconfig-build.json",
     "tsc-alias": "npx tsc-alias",
-    "dev": "nodemon  -L --watch 'src/' --exec 'ts-node src/index.ts' -e ts",
+    "dev": "nodemon  -L --watch 'src/' --exec 'ts-node -r tsconfig-paths/register src/index.ts' -e ts",
     "typeorm:cli": "typeorm-ts-node-commonjs",
     "migration:create": "npm run typeorm:cli -- migration:create ./src/infra/database/migrations/$npm_config_name",
     "migration:run": "npm run typeorm:cli -- migration:run -d ./src/infra/database/helpers/typeorm-cli-config.ts",
@@ -52,6 +52,7 @@
     "typescript": "4.3.5"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "faker": "^5.5.3",
     "mjml": "^4.10.4",
